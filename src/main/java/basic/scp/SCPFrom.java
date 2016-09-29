@@ -1,3 +1,5 @@
+package basic.scp;
+
 import com.jcraft.jsch.*;
 
 import java.io.File;
@@ -6,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * From remote-a -> localhost
+ *
  * @author Chanaka Lakmal
  */
 public class SCPFrom extends AbstractSCP {
@@ -15,14 +19,14 @@ public class SCPFrom extends AbstractSCP {
         FileOutputStream fos = null;
 
         try {
-            String to = "/tmp/scp/to/abc.txt";
+            String from = "/tmp/scp/remote-a/abc.txt";
             String user = "chanaka";
             String host = "localhost";
-            String from = "/tmp/scp/from/";
+            String to = "/tmp/scp/local/";
 
             String prefix = null;
-            if (new File(from).isDirectory()) {
-                prefix = from + File.separator;
+            if (new File(to).isDirectory()) {
+                prefix = to + File.separator;
             }
 
             JSch jsch = new JSch();
@@ -34,7 +38,7 @@ public class SCPFrom extends AbstractSCP {
             session.connect();
 
             // exec 'scp -f rfile' remotely
-            String command = "scp -f " + to;
+            String command = "scp -f " + from;
             Channel channel = session.openChannel("exec");
             ((ChannelExec) channel).setCommand(command);
 
@@ -87,7 +91,7 @@ public class SCPFrom extends AbstractSCP {
                 out.flush();
 
                 // read a content of lfile
-                fos = new FileOutputStream(prefix == null ? from : prefix + file);
+                fos = new FileOutputStream(prefix == null ? to : prefix + file);
                 int foo;
                 while (true) {
                     if (buf.length < filesize) foo = buf.length;

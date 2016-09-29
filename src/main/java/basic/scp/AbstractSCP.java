@@ -1,3 +1,5 @@
+package basic.scp;
+
 import com.jcraft.jsch.UIKeyboardInteractive;
 import com.jcraft.jsch.UserInfo;
 

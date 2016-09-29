@@ -1,13 +1,15 @@
+package basic.scp;
+
 import com.jcraft.jsch.*;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * From localhost -> remote-b
+ *
  * @author Chanaka Lakmal
  */
 public class SCPTo extends AbstractSCP {
@@ -17,10 +19,10 @@ public class SCPTo extends AbstractSCP {
         FileInputStream fis = null;
 
         try {
-            String from = "/tmp/scp/from/abc.txt";
+            String from = "/tmp/scp/local/abc.txt";
             String user = "chanaka";
             String host = "localhost";
-            String to = "/tmp/scp/to/";
+            String to = "/tmp/scp/remote-b/";
 
             JSch jsch = new JSch();
             Session session = jsch.getSession(user, host, 22);

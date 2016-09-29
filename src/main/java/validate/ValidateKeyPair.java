@@ -1,5 +1,6 @@
+package validate;
+
 import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 import java.util.Properties;
@@ -9,10 +10,16 @@ import java.util.Properties;
  */
 public class ValidateKeyPair {
 
-    public static void main(String[] args) throws JSchException {
+    public static void main(String[] args) throws Exception {
+        ValidateKeyPair validateKeyPair = new ValidateKeyPair();
+        validateKeyPair.connect();
+        System.exit(0);
+    }
+
+    public void connect() throws Exception {
         JSch jsch = new JSch();
 
-        final String keyFilePath = "/home/chanaka/.ssh/id_rsa";
+        final String keyFilePath = getClass().getClassLoader().getResource("id_rsa").toURI().getPath();
         final String keyPassword = null;
 
         if (keyFilePath != null) {
@@ -30,6 +37,5 @@ public class ValidateKeyPair {
         session.setConfig(config);
         session.connect();
         System.out.println("Connected !");
-        System.exit(0);
     }
 }
