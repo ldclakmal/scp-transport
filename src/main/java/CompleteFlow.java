@@ -10,7 +10,6 @@ import java.io.*;
  */
 public class CompleteFlow {
 
-
     public static void main(String[] args) {
         try {
             String remoteA = "/tmp/scp/remote-a/";

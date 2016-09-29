@@ -7,6 +7,7 @@ import java.io.InputStream;
  * @author Chanaka Lakmal
  */
 public class SSHManager {
+
     private JSch jschSSHChannel;
     private String userName;
     private String host;

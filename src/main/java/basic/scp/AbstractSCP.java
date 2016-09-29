@@ -42,6 +42,7 @@ public class AbstractSCP {
 }
 
 class MyUserInfo implements UserInfo, UIKeyboardInteractive {
+
     public String getPassword() {
         return passwd;
     }
