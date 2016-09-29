@@ -37,18 +37,16 @@ public class SSHManager {
         }
     }
 
-    public String connect() {
-        String errorMessage = null;
-
+    public Session connect() {
         try {
             sesConnection = jschSSHChannel.getSession(userName, host, port);
             sesConnection.setConfig("StrictHostKeyChecking", "no");
             sesConnection.connect(timeOut);
+            return sesConnection;
         } catch (JSchException jschX) {
-            errorMessage = jschX.getMessage();
+            jschX.printStackTrace();
+            return null;
         }
-
-        return errorMessage;
     }
 
     public String sendCommand(String command) {

@@ -4,9 +4,6 @@ import org.junit.Assert;
  * @author Chanaka Lakmal
  */
 public class SSHCommand {
-    private static String remoteA = "/tmp/scp/remote-a/abc.txt";
-    private static String remoteB = "/tmp/scp/remote-b/";
-    private static String local = "/tmp/scp/local/";
 
     private static String userName = "chanaka";
     private static String host = "192.168.1.143";
@@ -18,7 +15,7 @@ public class SSHCommand {
         try {
             String command = "ls /tmp/scp/remote-a/";
             SSHManager instance = new SSHManager(userName, host, 22, keyFilePath, keyPassword, timeOut);
-            String errorMessage = instance.connect();
+            instance.connect();
 
             String expResult = "abc.txt\n";
             String result = instance.sendCommand(command);

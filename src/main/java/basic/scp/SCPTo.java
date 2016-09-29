@@ -102,10 +102,11 @@ public class SCPTo extends AbstractSCP {
 
             System.exit(0);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             try {
                 if (fis != null) fis.close();
-            } catch (Exception ee) {
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
