@@ -87,10 +87,9 @@ public class NewParsedURL {
                 hostname = hostAndPort;
             } else {
                 hostname = hostAndPort.substring(0, pos);
-                if (!scheme.equals("scp")) {
-                    port = Integer.parseInt(hostAndPort.substring(pos + 1));
-                } else {
-                    port = 22;
+                String port = hostAndPort.substring(pos + 1);
+                if (!port.trim().isEmpty()) {
+                    this.port = Integer.parseInt(hostAndPort.substring(pos + 1));
                 }
             }
         }
