@@ -1,3 +1,5 @@
+package basic.ssh;
+
 import com.jcraft.jsch.*;
 
 import java.io.IOException;

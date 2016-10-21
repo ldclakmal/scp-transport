@@ -1,3 +1,5 @@
+package basic.ssh;
+
 import org.junit.Assert;
 
 /**

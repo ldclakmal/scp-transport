@@ -1,3 +1,4 @@
+import basic.ssh.SSHManager;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;

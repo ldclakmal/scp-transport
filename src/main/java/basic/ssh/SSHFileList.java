@@ -1,3 +1,5 @@
+package basic.ssh;
+
 import com.jcraft.jsch.Session;
 
 /**
@@ -12,8 +14,8 @@ public class SSHFileList {
             String local = "/tmp/scp/local/";
             String file = "abc.txt";
 
-            String userName = "dammina";
-            String host = "192.168.1.112";
+            String userName = "chanaka";
+            String host = "192.168.1.143";
             String keyFilePath = "/home/chanaka/.ssh/id_rsa";
             String keyPassword = null;
             int timeOut = 60000;

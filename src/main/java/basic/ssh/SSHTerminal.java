@@ -13,8 +13,8 @@ import java.util.Properties;
 public class SSHTerminal {
     public static void main(String[] args) {
         try {
-            String user = "dammina";
-            String host = "192.168.1.112";
+            String user = "chanaka";
+            String host = "192.168.1.143";
 
             String keyFilePath = "/home/chanaka/.ssh/id_rsa";
             String keyPassword = null;
