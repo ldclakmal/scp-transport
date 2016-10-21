@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.adroitlogic</groupId>
-    <artifactId>scp-test</artifactId>
+    <artifactId>scp-transport</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
