@@ -18,7 +18,7 @@ public class CompleteFlow {
             String local = "/tmp/scp/local/";
             String file = "abc.txt";
 
-            String userName = "dammina";
+            String userName = "user";
             String host = "192.168.1.112";
             String keyFilePath = "/home/chanaka/.ssh/id_rsa";
             String keyPassword = null;

@@ -25,11 +25,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.adroitlogic</groupId>
-            <artifactId>logging-api</artifactId>
-            <version>${logging.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -58,7 +53,6 @@
     </dependencies>
 
     <properties>
-        <logging.version>1.2.0-SNAPSHOT</logging.version>
         <junit.version>4.12</junit.version>
         <commons-collections.version>3.2</commons-collections.version>
         <jsch.version>0.1.54</jsch.version>
