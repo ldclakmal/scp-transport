@@ -10,18 +10,27 @@ import java.util.Properties;
  */
 public class SCPFromTo extends AbstractSCP {
 
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws IOException, JSchException {
+        String remoteA = "/tmp/scp/remote-a/";
+        String remoteB = "/tmp/scp/remote-b/";
+        String local = "/tmp/scp/local/";
+        String fileName = "abc.txt";
 
+        String user = "chanaka";
+        String host = "localhost";
+        int port = 22;
+
+        String keyFilePath = "/home/chanaka/.ssh/id_rsa";
+        String keyPassword = null;
+
+        Session session = createSession(user, host, port, keyFilePath, keyPassword);
+
+        copyLocalToRemote(session, remoteA, local, fileName);
+        copyLocalToRemote(session, local, remoteB, fileName);
+    }
+
+    private static Session createSession(String user, String host, int port, String keyFilePath, String keyPassword) {
         try {
-            String remoteA = "/tmp/scp/remote-a/abc.txt";
-            String remoteB = "/tmp/scp/remote-b/";
-            String user = "chanaka";
-            String host = "localhost";
-            String local = "/tmp/scp/local/";
-
-            String keyFilePath = "/home/chanaka/.ssh/id_rsa";
-            String keyPassword = null;
-
             JSch jsch = new JSch();
 
             if (keyFilePath != null) {
@@ -35,25 +44,21 @@ public class SCPFromTo extends AbstractSCP {
             Properties config = new java.util.Properties();
             config.put("StrictHostKeyChecking", "no");
 
-            Session session = jsch.getSession(user, host, 22);
+            Session session = jsch.getSession(user, host, port);
             session.setConfig(config);
             session.connect();
-            copyRemoteToLocal(session, remoteA, local);
 
-            session = jsch.getSession(user, host, 22);
-            session.setConfig(config);
-            session.connect();
-            copyLocalToRemote(session, local + "abc.txt", remoteB);
-
-            System.exit(0);
-        } catch (Exception e) {
+            return session;
+        } catch (JSchException e) {
             System.out.println(e);
+            return null;
         }
     }
 
-    public static void copyRemoteToLocal(Session session, String from, String to) throws JSchException, IOException {
-
+    private static void copyRemoteToLocal(Session session, String from, String to, String fileName) throws JSchException, IOException {
+        from = from + File.separator + fileName;
         String prefix = null;
+
         if (new File(to).isDirectory()) {
             prefix = to + File.separator;
         }
@@ -147,8 +152,9 @@ public class SCPFromTo extends AbstractSCP {
         session.disconnect();
     }
 
-    public static void copyLocalToRemote(Session session, String from, String to) throws JSchException, IOException {
+    private static void copyLocalToRemote(Session session, String from, String to, String fileName) throws JSchException, IOException {
         boolean ptimestamp = true;
+        from = from + File.separator + fileName;
 
         // exec 'scp -t rfile' remotely
         String command = "scp " + (ptimestamp ? "-p" : "") + " -t " + to;
