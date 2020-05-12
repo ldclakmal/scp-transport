@@ -4,4 +4,4 @@ SCP (Secure Copy) allows the files in the local file system or a remote file sys
 
 More info: https://medium.com/@ldclakmal/scp-with-java-b7b7dbcdbc85
 
-Usecase: https://developer.adroitlogic.com/connectors/docs/17.07/scp/scp_ingress_connector.html
+Use case: https://developer.adroitlogic.com/connectors/docs/17.07/scp/scp_ingress_connector.html
