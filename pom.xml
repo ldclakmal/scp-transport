@@ -56,6 +56,6 @@
         <junit.version>4.12</junit.version>
         <commons-collections.version>3.2</commons-collections.version>
         <jsch.version>0.1.54</jsch.version>
-        <quartz.version>1.7.2</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
     </properties>
 </project>
